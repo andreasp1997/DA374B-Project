@@ -19,6 +19,13 @@
         <form action="LoginOrRegister" method="post">
                         <h2>All-in-one Converter</h2>
             <h2>Register:</h2><br>
+             <select>
+  <option value="Standard">Standard (Free)</option>
+  <option value="Premium">Premium ($9.99)</option>
+  <option value="Plus">Premium+ ($19.99)</option>
+</select> 
+            <br>            <br>
+
             <label> Firstname </label>  <input name="firstname" type="text"> <br><br>
             <label> Lastname </label> <input name="lastname" type="text"> <br><br>
             <label> SSN </label>  <input name="ssn" type="text"> <br><br>
