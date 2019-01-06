@@ -9,18 +9,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Or Register</title>
+        <title>Welcome to All-in-one Converter online!</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
     </head>
+
     <body>
-        <div>
+        <div class = "login-box">
         <form action="LoginOrRegister" method="post">
-            <h2>Login</h2><br>
-            <b> username: </b>  <input name="username" type="text"> <br><br>
-            <b> password: </b> <input name="password" type="text"> <br><br>
+                        <h2>All-in-one Converter</h2>
+            <h2>Login:</h2><br>*
+       <label> Username </label>  <input name="username" type="text"> <br><br>
+            <label> Password </label>  <input name="password" type="password"> <br><br>
             <input type="hidden" name="back" value="Login.jsp" />
 
-            <input type="submit" value="Register" />
+            <input style="margin-bottom: 2%;" type="submit" value="Login" />
+            </br>
+            <a style="text-align:center;" href="Register.jsp">Not registered yet? Click here to do so</a>
         </form>
         </div>
+        
     </body>
 </html>
