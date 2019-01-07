@@ -7,6 +7,12 @@ package web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,6 +78,32 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("username").toString();
         String email = request.getParameter("email").toString();
         String ssn = request.getParameter("ssn").toString();
+        
+        String checkUser = null;
+        
+        DBhandler dbhandler = new DBhandler();
+        Connection connection = dbhandler.getCon();
+        
+        //Check if username exists
+        try {
+            
+            Statement statement = connection.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT username from mydb.Account where username = + '" + username + "'");
+            
+            while (rs.next()){
+                checkUser = rs.getString(1);
+            }
+            
+     
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (checkUser != null){
+            System.out.println("User already exists");
+        }
         
         
     }
