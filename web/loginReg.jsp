@@ -16,7 +16,7 @@
 
     <body>
         <div class = "login-box">
-        <form action="LoginOrRegister" method="post">
+        <form action="Servlet" method="post">
                         <h2>All-in-one Converter</h2>
             <h2>Login:</h2><br>*
        <label> Username </label>  <input name="username" type="text"> <br><br>

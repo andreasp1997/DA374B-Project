@@ -16,7 +16,7 @@
 
     <body>
         <div class = "login-box">
-        <form action="LoginOrRegister" method="post">
+        <form action="RegisterServlet" method="post">
                         <h2>All-in-one Converter</h2>
             <h2>Register:</h2><br>
              <select>
@@ -29,7 +29,7 @@
             <label> Firstname </label>  <input name="firstname" type="text"> <br><br>
             <label> Lastname </label> <input name="lastname" type="text"> <br><br>
             <label> SSN </label>  <input name="ssn" type="text"> <br><br>
-            <label> E-mail </label>  <input name="ssn" type="text"> <br><br>
+            <label> E-mail </label>  <input name="email" type="text"> <br><br>
             <label> Username </label>  <input name="username" type="text"> <br><br>
             <label> Password </label>  <input name="password" type="password"> <br><br>
 
