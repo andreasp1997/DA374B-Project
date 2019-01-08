@@ -89,7 +89,9 @@ public class LoginServlet extends HttpServlet {
         
         String checkPassword = null;
         String checkUser = null;
+        String checkAccountType = null;
         
+        //Check password for username
         try {
             
             Statement statement = connection.createStatement();
@@ -104,6 +106,7 @@ public class LoginServlet extends HttpServlet {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        //Check if user exists 
         try {
             
             Statement statement = connection.createStatement();
@@ -118,13 +121,44 @@ public class LoginServlet extends HttpServlet {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        System.out.println(checkUser + " " + checkPassword);
-        System.out.println(username +  " " + password);
+        //Check account type for logging in
+        try {
+            
+            Statement statement = connection.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT accountType from mydb.Account where username = + '" + username + "'");
+            
+            while (rs.next()){
+                checkAccountType = rs.getString(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println(checkAccountType);
         
         if (checkUser == "" || !checkPassword.equals(password)){
             RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("LoginRetry.jsp");
             RequetsDispatcherObj.forward(request, response);
         } else {
+            
+            if (checkAccountType.equalsIgnoreCase("standard")){            
+               
+                RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("WEB-INF/StandardConv.jsp");
+                RequetsDispatcherObj.forward(request, response);
+                
+            } else if (checkAccountType.equalsIgnoreCase("premium")){
+               
+                RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("WEB-INF/PremiumConv.jsp");          
+                RequetsDispatcherObj.forward(request, response);
+           
+            } else if (checkAccountType.equalsIgnoreCase("plus")){
+                
+                RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("WEB-INF/PremiumPlusConv.jsp");          
+                RequetsDispatcherObj.forward(request, response);
+                
+            }
             
         }
         

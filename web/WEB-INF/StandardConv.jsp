@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Standard Converter</title>
+                        <link rel="stylesheet" type="text/css" href="Assets/style.css">
+
     </head>
     <body>
         <h1>Welcome to All-In-One Converter Standard Edition</h1>
