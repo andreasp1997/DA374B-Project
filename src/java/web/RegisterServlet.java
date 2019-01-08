@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -103,11 +104,6 @@ public class RegisterServlet extends HttpServlet {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if (checkUser != null){
-            System.out.println("User already exists");
-            accId = 0;
-        }
-        
         System.out.println(accountType);
         
         //Check what account type is selected
@@ -142,7 +138,7 @@ public class RegisterServlet extends HttpServlet {
         }
         
         //Create Account if all conditions are met
-        if (firstname != null && lastname != null && username != null && 
+        if (checkUser == "" && firstname != null && lastname != null && username != null && 
                 password != null && email != null && ssn != null){
             
             try {
@@ -153,13 +149,20 @@ public class RegisterServlet extends HttpServlet {
                     + "firstname, lastname, email, ssn, username, password, accountType) values"
                     + "('"+ accId +"', '"+ firstname +"', '" + lastname + "', '" + email + "', '" + ssn + "',"
                             + " '" + username + "', '" + password +"', '" + accType +"')");
+            
+            RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("loginReg.jsp");
+            RequetsDispatcherObj.forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+          
+        // Redirect to register again if username already exists
+        // Or fields are empty
         } else {
             accId = 0;
+            RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("RegisterRetry.jsp");
+            RequetsDispatcherObj.forward(request, response);
         }
         
         
