@@ -19,7 +19,7 @@
         <form action="RegisterServlet" method="post">
                         <h2>All-in-one Converter</h2>
             <h2>Register:</h2><br>
-             <select>
+            <select id="accType" name="accType">
   <option value="Standard">Standard (Free)</option>
   <option value="Premium">Premium ($9.99)</option>
   <option value="Plus">Premium+ ($19.99)</option>

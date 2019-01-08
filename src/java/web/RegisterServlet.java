@@ -78,8 +78,12 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("username").toString();
         String email = request.getParameter("email").toString();
         String ssn = request.getParameter("ssn").toString();
+        String accountType = request.getParameter("accType").toString();
         
+        String accType = null;
         String checkUser = null;
+        String idAccountNr = null;
+        int accId = 0;
         
         DBhandler dbhandler = new DBhandler();
         Connection connection = dbhandler.getCon();
@@ -94,15 +98,68 @@ public class RegisterServlet extends HttpServlet {
             while (rs.next()){
                 checkUser = rs.getString(1);
             }
-            
-     
-           
+
         } catch (SQLException ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         if (checkUser != null){
             System.out.println("User already exists");
+            accId = 0;
+        }
+        
+        System.out.println(accountType);
+        
+        //Check what account type is selected
+        if (accountType.equalsIgnoreCase("Standard")){
+            accType = "Standard";
+        } else if (accountType.equalsIgnoreCase("Premium")){
+            accType = "Premium";
+        } else if (accountType.equalsIgnoreCase("Plus")){
+            accType = "Plus";
+        }
+        
+        //get account ID
+        try {
+            
+            Statement statement = connection.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT count(idAccount) from mydb.Account");
+            
+            while (rs.next()){
+                idAccountNr = rs.getString(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(idAccountNr.equals("0") || idAccountNr == null){
+            accId = 0;
+        } else {
+            accId = 0;
+            accId = Integer.parseInt(idAccountNr) + 1;
+        }
+        
+        //Create Account if all conditions are met
+        if (firstname != null && lastname != null && username != null && 
+                password != null && email != null && ssn != null){
+            
+            try {
+            
+            Statement statement = connection.createStatement();
+            
+            statement.executeUpdate("INSERT INTO mydb.Account (idAccount, "
+                    + "firstname, lastname, email, ssn, username, password, accountType) values"
+                    + "('"+ accId +"', '"+ firstname +"', '" + lastname + "', '" + email + "', '" + ssn + "',"
+                            + " '" + username + "', '" + password +"', '" + accType +"')");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        } else {
+            accId = 0;
         }
         
         
