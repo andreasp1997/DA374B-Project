@@ -18,7 +18,7 @@
         <div class = "login-box">
         <form action="LoginServlet" method="post">
                         <h2>All-in-one Converter</h2>
-            <h2>Login:</h2><br>*
+            <h2 style="color:red">Login Failed, Either username or password is incorrect:</h2><br>*
        <label> Username </label>  <input name="username" type="text"> <br><br>
             <label> Password </label>  <input name="password" type="password"> <br><br>
             <input type="hidden" name="back" value="Login.jsp" />

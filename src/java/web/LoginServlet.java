@@ -7,6 +7,13 @@ package web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,7 +79,55 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        DBhandler dbhandler = new DBhandler();
+        Connection connection = dbhandler.getCon();
+        
+        String checkPassword = null;
+        String checkUser = null;
+        
+        try {
+            
+            Statement statement = connection.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT password from mydb.Account where username = + '" + username + "'");
+            
+            while (rs.next()){
+                checkPassword = rs.getString(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            
+            Statement statement = connection.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT username from mydb.Account where username = + '" + username + "'");
+            
+            while (rs.next()){
+                checkUser = rs.getString(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println(checkUser + " " + checkPassword);
+        System.out.println(username +  " " + password);
+        
+        if (checkUser == "" || !checkPassword.equals(password)){
+            RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("LoginRetry.jsp");
+            RequetsDispatcherObj.forward(request, response);
+        } else {
+            
+        }
+        
     }
 
     /**

@@ -130,7 +130,7 @@ public class RegisterServlet extends HttpServlet {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if(idAccountNr.equals("0") || idAccountNr == null){
+        if(idAccountNr.equals("0") || idAccountNr == null || idAccountNr.equals("")){
             accId = 0;
         } else {
             accId = 0;
@@ -138,7 +138,7 @@ public class RegisterServlet extends HttpServlet {
         }
         
         //Create Account if all conditions are met
-        if (checkUser == "" && firstname != null && lastname != null && username != null && 
+        if (checkUser == "" || checkUser == null && firstname != null && lastname != null && username != null && 
                 password != null && email != null && ssn != null){
             
             try {
