@@ -134,7 +134,7 @@ public class RegisterServlet extends HttpServlet {
             accId = 0;
         } else {
             accId = 0;
-            accId = Integer.parseInt(idAccountNr) + 1;
+            accId = Integer.parseInt(idAccountNr);
         }
         
         //Create Account if all conditions are met
