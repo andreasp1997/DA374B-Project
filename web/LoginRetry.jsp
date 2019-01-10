@@ -13,21 +13,21 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
     </head>
-
+        
     <body>
         <div class = "login-box">
-        <form action="LoginServlet" method="post">
-                        <h2>All-in-one Converter</h2>
-            <h2 style="color:red">Login Failed, Either username or password is incorrect:</h2><br>*
-       <label> Username </label>  <input name="username" type="text"> <br><br>
-            <label> Password </label>  <input name="password" type="password"> <br><br>
-            <input type="hidden" name="back" value="Login.jsp" />
-
-            <input style="margin-bottom: 2%;" type="submit" value="Login" />
-            </br>
-            <a style="text-align:center;" href="Register.jsp">Not registered yet? Click here to do so</a>
-        </form>
+            <form action="LoginServlet" method="post">
+                <h2>All-in-one Converter</h2>
+                <h2 style="color:red">Login Failed, Either username or password is incorrect:</h2><br>*
+                <label> Username </label>  <input name="username" type="text"> <br><br>
+                <label> Password </label>  <input name="password" type="password"> <br><br>
+                <input type="hidden" name="back" value="Login.jsp" />
+                
+                <input style="margin-bottom: 2%;" type="submit" value="Login" />
+                </br>
+                <a style="text-align:center;" href="Register.jsp">Not registered yet? Click here to do so</a>
+            </form>
         </div>
-        
+            
     </body>
 </html>

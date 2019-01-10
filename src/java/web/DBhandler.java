@@ -23,7 +23,7 @@ public class DBhandler {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
