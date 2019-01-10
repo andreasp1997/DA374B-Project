@@ -70,8 +70,92 @@
                     
                     
             </div>
+                        
+                        <div class="column"> 
+                
+                <h2> Volume Conversion </h2>
+                <form action="ConversionServletPremium" method="post">
+                    <select id="volumeType" name="volumeType">
+                        
+                        <option value="L2G">Liter(s) to Gallon(s)</option>
+                        <option value="G2L">Gallon(s) to Liter(s)</option>
+                        <input name="fromVolume" type="text">
+                        <input name="toVolume" type="text" disabled value=<%= request.getAttribute("volumeTo") %>>
+                        <button type="input" name="convertVolume">Convert</button>
+                            
+                    </select> 
+                </form>    
+                    
+                    
+            </div>
+                
+            <div class="column"> 
+                
+                <h2> Bits&Bytes Conversion </h2>
+                <form action="ConversionServletPremium" method="post">
+                    <select id="bitType" name="bitType">
+                        
+                        <option value="BI2BY">Bit(s) to Byte(s)</option>
+                        <option value="BY2BI">Byte(s) to Bit(s)</option>
+                        <input name="fromBit" type="text">
+                        <input name="toBit" type="text" disabled value=<%= request.getAttribute("bitTo") %>>
+                        <button type="input" name="convertBit">Convert</button>
+                            
+                    </select> 
+                </form>    
+                
+                    
+            </div>
+                        
+                               <div class="column"> 
+                
+                <h2>Currency Conversion </h2>
+                <form action="ConversionServletPremium" method="post">
+                    <select id="volumeType" name="volumeType">
+                        
+                        <option value="U2S">USD to SEK</option>
+                        <option value="S2U">SEK to USD</option>
+                        <option value="E2S">EUR to SEK</option>
+                        <option value="S2E">SEK to EUR</option>
+                        <option value="Y2S">YEN to SEK</option>
+                        <option value="S2Y">SEK to YEN</option>
+                        <input name="fromCurrency" type="text">
+                        <input name="toCurrency" type="text" disabled value=<%= request.getAttribute("volumeTo") %>>
+                        <button type="input" name="convertCurrency">Convert</button>
+                            
+                    </select> 
+                </form>    
+                    
+                    
+            </div>
+                
+            <div class="column"> 
+                
+                <h2>Time Conversion </h2>
+                <form action="ConversionServletPremium" method="post">
+                    <select id="bitType" name="bitType">
+                        
+                        <option value="H2M">Hours to Minutes</option>
+                        <option value="M2H">Minutes to Hours</option>
+                        <option value="S2H">Seconds to Hours</option>
+                        <option value="H2S">Hours to Seconds</option>
+                        <input name="fromTime" type="text">
+                        <input name="toTime" type="text" disabled value=<%= request.getAttribute("bitTo") %>>
+                        <button type="input" name="convertTime">Convert</button>
+                            
+                    </select> 
+                </form>    
+                
+                    
+            </div>
+                    
+                        
+                        
+                        
+                        
                 
         </div>
             
+                        <a style = "font-size: 22px; float:left; margin-top: 5%;">Logout</a>
     </body>
 </html>

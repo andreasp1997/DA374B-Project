@@ -109,6 +109,6 @@
             </div>
                 
         </div>
-            
+            <a style = "font-size: 22px; float:left; margin-top: 5%;">Logout</a>
     </body>
 </html>
