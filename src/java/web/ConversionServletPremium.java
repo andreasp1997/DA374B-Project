@@ -123,7 +123,7 @@ private ConversionBean conversionBean;
             }catch(NumberFormatException ex) {
                 request.setAttribute("weightTo", "BADINPUT");
                 System.out.println(ex);
-                getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlus.jsp").forward(request,response);
+                getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
                 
             }
             double returnValue;
