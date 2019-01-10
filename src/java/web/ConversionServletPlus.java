@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jun
  */
-@WebServlet(name = "ConversionServlet", urlPatterns = {"/ConversionServlet"})
+@WebServlet(name = "ConversionServletPlus", urlPatterns = {"/ConversionServletPlus"})
 public class ConversionServletPlus extends HttpServlet {
     @EJB
     ConversionBean conversionBean;
@@ -42,10 +42,10 @@ public class ConversionServletPlus extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConversionServlet</title>");            
+            out.println("<title>Servlet ConversionServletPlus</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConversionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConversionServletPlus at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
