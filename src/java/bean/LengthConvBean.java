@@ -16,7 +16,7 @@ public class LengthConvBean {
 
     public double F2M(double value) {
         double meter;
-        meter = value / 3.2808;
+        meter = value * 0.3048;
         return meter;
     }
 
