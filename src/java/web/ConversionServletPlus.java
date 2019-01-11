@@ -86,6 +86,12 @@ public class ConversionServletPlus extends HttpServlet {
         String lengthValue = request.getParameter("fromLength");
         String conversionTypeLength = request.getParameter("lengthType");
         
+        String volumeValue = request.getParameter("fromVolume");
+        String conversionTypeVolume = request.getParameter("volumeType");
+        
+        String bitValue = request.getParameter("fromBit");
+        String conversionTypeBit = request.getParameter("bitType");
+        
         if(request.getParameter("convertTemp") != null) {
             
             double value = 0;
@@ -163,7 +169,58 @@ public class ConversionServletPlus extends HttpServlet {
             }
         }
         
-    }
+        if(request.getParameter("convertVolume") != null) {
+            double value = 0;
+            try {
+                value = Double.parseDouble(volumeValue);
+            }catch(NumberFormatException ex) {
+                request.setAttribute("volumeTo", "BADINPUT");
+                getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                System.out.println(ex);
+            }
+            
+            double returnValue;
+            switch(conversionTypeVolume) {
+                case "L2G" :
+                    returnValue = conversionBean.L2G(value);
+                    System.out.println(returnValue);
+                    request.setAttribute("volumeTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                case "G2L" :
+                    returnValue = conversionBean.G2L(value);
+                    System.out.println(returnValue);
+                    request.setAttribute("volumeTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+            }
+        }
+        
+        if(request.getParameter("convertBit") != null) {
+            double value = 0;
+            try {
+                value = Double.parseDouble(bitValue);
+            }catch(NumberFormatException ex) {
+                request.setAttribute("bitTo", "BADINPUT");
+                getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                System.out.println(ex);
+            }
+            
+            double returnValue;
+            switch(conversionTypeBit) {
+                case "BI2BY" :
+                    returnValue = conversionBean.BI2BY(value);
+                    request.setAttribute("bitTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                case "BY2BI" :
+                    returnValue = conversionBean.BY2BI(value);
+                    request.setAttribute("bitTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+            }
+        }
+    }      
 
     /**
      * Returns a short description of the servlet.

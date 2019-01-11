@@ -74,7 +74,7 @@
                         <div class="column"> 
                 
                 <h2> Volume Conversion </h2>
-                <form action="ConversionServletPremium" method="post">
+                <form action="ConversionServletPlus" method="post">
                     <select id="volumeType" name="volumeType">
                         
                         <option value="L2G">Liter(s) to Gallon(s)</option>
@@ -92,7 +92,7 @@
             <div class="column"> 
                 
                 <h2> Bits&Bytes Conversion </h2>
-                <form action="ConversionServletPremium" method="post">
+                <form action="ConversionServletPlus" method="post">
                     <select id="bitType" name="bitType">
                         
                         <option value="BI2BY">Bit(s) to Byte(s)</option>
@@ -110,7 +110,7 @@
                                <div class="column"> 
                 
                 <h2>Currency Conversion </h2>
-                <form action="ConversionServletPremium" method="post">
+                <form action="ConversionServletPlus" method="post">
                     <select id="volumeType" name="volumeType">
                         
                         <option value="U2S">USD to SEK</option>
@@ -132,7 +132,7 @@
             <div class="column"> 
                 
                 <h2>Time Conversion </h2>
-                <form action="ConversionServletPremium" method="post">
+                <form action="ConversionServletPlus" method="post">
                     <select id="bitType" name="bitType">
                         
                         <option value="H2M">Hours to Minutes</option>
