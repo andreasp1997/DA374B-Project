@@ -56,7 +56,7 @@
             <div class="column"> 
                 
                 <h2> Weight Conversion </h2>
-                <form action="ConversionServletPus" method="post">
+                <form action="ConversionServletPlus" method="post">
                     <select id="weightType" name="weightType">
                         
                         <option value="K2P">Kilogram(s) to Pound(s)</option>
