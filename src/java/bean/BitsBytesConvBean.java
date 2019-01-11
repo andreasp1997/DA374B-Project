@@ -5,13 +5,13 @@
  */
 package bean;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 
 /**
  *
  * @author andreas
  */
-@Stateless
+@Stateful
 public class BitsBytesConvBean {
 
     public double BI2BY(double value) {

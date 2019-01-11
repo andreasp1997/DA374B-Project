@@ -5,18 +5,18 @@
  */
 package bean;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 
 /**
  *
  * @author andreas
  */
-@Stateless
+@Stateful
 public class LengthConvBean {
 
     public double F2M(double value) {
         double meter;
-        meter = value * 0.3048;
+        meter = value / 3.2808;
         return meter;
     }
 

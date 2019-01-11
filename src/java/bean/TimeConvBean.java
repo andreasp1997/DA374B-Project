@@ -5,13 +5,13 @@
  */
 package bean;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 
 /**
  *
  * @author andreas
  */
-@Stateless
+@Stateful
 public class TimeConvBean {
 
     public double H2M(double value) {

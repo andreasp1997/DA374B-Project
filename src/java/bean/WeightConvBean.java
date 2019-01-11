@@ -5,13 +5,13 @@
  */
 package bean;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 
 /**
  *
  * @author andreas
  */
-@Stateless
+@Stateful
 public class WeightConvBean {
 
     public double P2K(double value) {
