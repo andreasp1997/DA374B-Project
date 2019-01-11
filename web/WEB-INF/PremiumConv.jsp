@@ -109,6 +109,6 @@
             </div>
                 
         </div>
-                   <button style="margin-bottom: 2%; float:left;" type="button" name="logout" onclick="window.location='loginReg.jsp'">Log out</button>
+                   <button style="margin-bottom: 2%; float:left;" type="button" name="logout" onclick="window.location='Login.jsp'">Log out</button>
     </body>
 </html>

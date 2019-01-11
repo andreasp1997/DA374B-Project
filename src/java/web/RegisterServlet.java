@@ -76,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
         String firstname = request.getParameter("firstname").toString();
         String lastname = request.getParameter("lastname").toString();
         String username = request.getParameter("username").toString();
-        String password = request.getParameter("username").toString();
+        String password = request.getParameter("password").toString();
         String email = request.getParameter("email").toString();
         String ssn = request.getParameter("ssn").toString();
         String accountType = request.getParameter("accType").toString();
@@ -150,7 +150,7 @@ public class RegisterServlet extends HttpServlet {
                     + "('"+ accId +"', '"+ firstname +"', '" + lastname + "', '" + email + "', '" + ssn + "',"
                             + " '" + username + "', '" + password +"', '" + accType +"')");
             
-            RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("loginReg.jsp");
+            RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("Login.jsp");
             RequetsDispatcherObj.forward(request, response);
 
         } catch (SQLException ex) {
