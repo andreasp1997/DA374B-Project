@@ -25,7 +25,17 @@
                     <select id="lengthType" name="lengthType">
                         
                         <option value="M2F">Meter(s) to Feet</option>
+                        <option value="M2IN">Meter(s) to Inch(es)</option>
+                        <option value="M2CM">Meter(s) to Centimeter(s)</option> 
                         <option value="F2M">Feet to Meter(s)</option>
+                        <option value="F2IN">Feet to Inch(es)</option>
+                        <option value="F2CM">Feet to Centimeter(s)</option>
+                        <option value="CM2M">Centimeter(s) to Meter(s)</option>
+                        <option value="CM2F">Centimeter(s) to Feet</option>
+                        <option value="CM2IN">Centimeter(s) to Inch(es)</option>
+                        <option value="IN2M">Inch(es) to Meter(s)</option>
+                        <option value="IN2F">Inch(es) to Feet</option>
+                        <option value="IN2CM">Inch(es) to Centimeter(s)</option>
                         <input name="fromLength" type="text">
                         <% 
                             Object length = request.getAttribute("lengthTo");
@@ -74,7 +84,17 @@
                     <select id="weightType" name="weightType">
                         
                         <option value="K2P">Kilogram(s) to Pound(s)</option>
+                        <option value="K2MG">Kilogram(s) to Milligram(s)</option>
+                        <option value="K2O">Kilogram(s) to Ounce(s)</option>
                         <option value="P2K">Pound(s) to Kilogram(s)</option>
+                        <option value="P2O">Pound(s) to Ounce(s)</option>
+                        <option value="P2MG">Pound(s) to Milligram(s)</option>
+                        <option value="MG2K">Milligram(s) to Kilogram(s)</option>
+                        <option value="MG2P">Milligram(s) to Pound(s)</option>
+                        <option value="MG2O">Milligram(s) to Ounce(s)</option>
+                        <option value="O2K">Ounce(s) to Kilogram(s)</option>
+                        <option value="O2P">Ounce(s) Pound(s)</option>
+                        <option value="O2MG">Ounce(s) Milligram(s)</option>
                         <input name="fromWeight" type="text">
                         <% 
                             Object weight = request.getAttribute("weightTo");
