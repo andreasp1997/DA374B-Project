@@ -14,6 +14,17 @@ import javax.ejb.Stateless;
 @Stateless
 public class TempConvBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public double F2C(double value) {
+        double celcius;
+        celcius = ((value-32)*5)/ 9;
+        return celcius;
+    }
+
+    public double C2F(double value) {
+        double fahrenheit;
+        fahrenheit = ((value * 9) / 5) + 32;
+        return fahrenheit;
+    }
+
+    
 }

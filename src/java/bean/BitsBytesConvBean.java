@@ -14,6 +14,17 @@ import javax.ejb.Stateless;
 @Stateless
 public class BitsBytesConvBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public double BI2BY(double value) {
+        double bytes;
+        bytes = value / 8;
+        return bytes;
+    }
+
+    public double BY2BI(double value) {
+        double bit;
+        bit = value * 8;
+        return bit;
+    }
+
+    
 }

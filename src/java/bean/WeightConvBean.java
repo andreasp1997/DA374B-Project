@@ -14,6 +14,17 @@ import javax.ejb.Stateless;
 @Stateless
 public class WeightConvBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public double P2K(double value) {
+        double kilogram;
+        kilogram = value * 0.45359237;
+        return kilogram;
+    }
+
+    public double K2P(double value) {
+        double pound;
+        pound = value / 0.45359237;
+        return pound;
+    }
+
+    
 }

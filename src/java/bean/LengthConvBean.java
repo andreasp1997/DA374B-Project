@@ -14,6 +14,16 @@ import javax.ejb.Stateless;
 @Stateless
 public class LengthConvBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public double F2M(double value) {
+        double meter;
+        meter = value * 0.3048;
+        return meter;
+    }
+
+    public double M2F(double value) {
+        double feet;
+        feet = value / 0.3048;
+        return feet;
+    }
+    
 }

@@ -14,6 +14,29 @@ import javax.ejb.Stateless;
 @Stateless
 public class TimeConvBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public double H2M(double value) {
+        double minutes;
+        minutes = value * 60;
+        return minutes;
+    }
+
+    public double M2H(double value) {
+        double hours;
+        hours = value / 60;
+        return hours;
+    }
+
+    public double S2H(double value) {
+        double hours;
+        hours = value / 3600;
+        return hours;
+             
+    }
+
+    public double H2S(double value) {
+        double seconds;
+        seconds = value * 3600;
+        return seconds;
+    }
+     
 }

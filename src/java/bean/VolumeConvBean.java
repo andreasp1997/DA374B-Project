@@ -14,6 +14,17 @@ import javax.ejb.Stateless;
 @Stateless
 public class VolumeConvBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public double L2G(double value) {
+        double gallon;
+        gallon = value * 0.264172;
+        return gallon;
+    }
+
+    public double G2L(double value) {
+        double liter;
+        liter = value /  0.264172;
+        return liter;
+    }
+
+    
 }

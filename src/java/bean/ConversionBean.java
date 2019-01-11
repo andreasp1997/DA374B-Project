@@ -13,7 +13,8 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ConversionBean {
-
+    
+    
     public double F2C(double value) {
         double celcius;
         celcius = ((value-32)*5)/ 9;
@@ -42,6 +43,31 @@ public class ConversionBean {
         double pound;
         pound = value / 0.45359237;
         return pound;
+    }
+    
+        public double H2M(double value) {
+        double minutes;
+        minutes = value * 60;
+        return minutes;
+    }
+
+    public double M2H(double value) {
+        double hours;
+        hours = value / 60;
+        return hours;
+    }
+
+    public double S2H(double value) {
+        double hours;
+        hours = value / 3600;
+        return hours;
+             
+    }
+
+    public double H2S(double value) {
+        double seconds;
+        seconds = value * 3600;
+        return seconds;
     }
 
     public double P2K(double value) {

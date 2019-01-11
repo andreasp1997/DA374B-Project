@@ -33,7 +33,7 @@
                                 length = "";
                             }
                         %>
-                        <input name="toLength" type="text" disabled value= <%= request.getAttribute("lengthTo") %>>
+                        <input name="toLength" type="text" disabled value= <%=length%>>
                         <button type="input" name="convertLength">Convert</button>
                             
                     </select> 
@@ -82,7 +82,7 @@
                                 weight = "";
                             }
                         %>
-                        <input name="toWeight" type="text" disabled value=<%= weight%>>
+                        <input name="toWeight" type="text" disabled value=<%=weight%>>
                         <button type="input" name="convertWeight">Convert</button>
                             
                     </select> 

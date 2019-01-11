@@ -6,6 +6,9 @@
 package web;
 
 import bean.ConversionBean;
+import bean.LengthConvBean;
+import bean.TempConvBean;
+import bean.WeightConvBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -21,8 +24,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ConversionServletStandard", urlPatterns = {"/ConversionServletStandard"})
 public class ConversionServletStandard extends HttpServlet {
-@EJB
-private ConversionBean conversionBean;
+    @EJB
+    private ConversionBean conversionBean;
+    private LengthConvBean lengthConvBean;
+    private WeightConvBean weightConvBean;
+    private TempConvBean tempConvBean;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -99,11 +105,13 @@ private ConversionBean conversionBean;
             switch (conversionTypeTemp) {
                 case "F2C" :
                     returnValue = conversionBean.F2C(value);
+                    //returnValue = tempConvBean.F2C(value);
                     request.setAttribute("tempTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request, response);
                     break;
                 case "C2F":
                     returnValue = conversionBean.C2F(value);
+                    //returnValue = tempConvBean.C2F(value);
                     request.setAttribute("tempTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
@@ -124,11 +132,13 @@ private ConversionBean conversionBean;
             switch(conversionTypeWeight) {
                 case "K2P" :
                     returnValue = conversionBean.K2P(value);
+                    //returnValue = weightConvBean.K2P(value);
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
                 case "P2K" :
                     returnValue = conversionBean.P2K(value);
+                    //returnValue = weightConvBean.P2K(value);
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
@@ -150,10 +160,12 @@ private ConversionBean conversionBean;
                 case "M2F" :
                     returnValue = conversionBean.M2F(value);
                     request.setAttribute("lengthTo", returnValue);
+                    //returnValue = lenghtConvBean.M2F(value);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
                 case "F2M" :
                     returnValue = conversionBean.F2M(value);
+                    //returnValue = lenghtConvBean.F2M(value);
                     request.setAttribute("lengthTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
