@@ -170,7 +170,7 @@
                 
                 <h2>Time Conversion </h2>
                 <form action="ConversionServletPlus" method="post">
-                    <select id="bitType" name="bitType">
+                    <select id="timeType" name="timeType">
                         
                         <option value="H2M">Hours to Minutes</option>
                         <option value="H2S">Hours to Seconds</option>
@@ -180,7 +180,7 @@
                         <option value="S2M">Seconds to Minutes</option>
                         
                         <input name="fromTime" type="text">
-                        <input name="toTime" type="text" disabled value=<%= request.getAttribute("bitTo") %>>
+                        <input name="toTime" type="text" disabled value=<%= request.getAttribute("timeTo") %>>
                         <button type="input" name="convertTime">Convert</button>
                             
                     </select> 

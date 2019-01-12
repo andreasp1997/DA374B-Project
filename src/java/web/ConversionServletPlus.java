@@ -10,6 +10,7 @@ import bean.ConversionBean;
 import bean.CurrencyConvBean;
 import bean.LengthConvBean;
 import bean.TempConvBean;
+import bean.TimeConvBean;
 import bean.VolumeConvBean;
 import bean.WeightConvBean;
 import java.io.IOException;
@@ -36,6 +37,7 @@ public class ConversionServletPlus extends HttpServlet {
     private final VolumeConvBean volumeConvBean = new VolumeConvBean();
     private final BitsBytesConvBean bitsBytesConvBean = new BitsBytesConvBean();
     private final CurrencyConvBean currencyConvBean = new CurrencyConvBean();
+    private final TimeConvBean timeConvBean = new TimeConvBean();
     
     
 
@@ -108,6 +110,9 @@ public class ConversionServletPlus extends HttpServlet {
         
         String currencyValue = request.getParameter("fromCurrency");
         String conversionTypeCurrency = request.getParameter("currencyType");
+        
+        String timeValue = request.getParameter("fromTime");
+        String conversionTypeTime = request.getParameter("timeType");
         
         if(request.getParameter("convertTemp") != null) {
             
@@ -341,6 +346,57 @@ public class ConversionServletPlus extends HttpServlet {
                     
                     returnValue = currencyConvBean.Y2E(value);
                     request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+            }
+        }
+        
+        if(request.getParameter("convertTime") != null) {
+            double value = 0;
+            try {
+                value = Double.parseDouble(timeValue);
+            }catch(NumberFormatException ex) {
+                request.setAttribute("timeTo", "BADINPUT");
+                getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                System.out.println(ex);
+            }
+            
+            double returnValue;
+            switch(conversionTypeTime) {
+                case "H2M" :     
+                    returnValue = timeConvBean.H2M(value);
+                    System.out.println(returnValue);
+                    request.setAttribute("timeTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "H2S" :
+                    returnValue = timeConvBean.H2S(value);
+                    request.setAttribute("timeTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "M2H" :
+                    returnValue = timeConvBean.M2H(value);
+                    request.setAttribute("timeTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "M2S" :
+                    returnValue = timeConvBean.M2S(value);
+                    request.setAttribute("timeTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "S2H" :
+                    returnValue = timeConvBean.S2H(value);
+                    request.setAttribute("timeTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "S2M" :
+                    returnValue = timeConvBean.S2M(value);
+                    request.setAttribute("timeTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
                     break;
             }
