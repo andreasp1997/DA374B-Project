@@ -7,6 +7,7 @@ package web;
 
 import bean.BitsBytesConvBean;
 import bean.ConversionBean;
+import bean.CurrencyConvBean;
 import bean.LengthConvBean;
 import bean.TempConvBean;
 import bean.VolumeConvBean;
@@ -34,6 +35,7 @@ public class ConversionServletPlus extends HttpServlet {
     private final TempConvBean tempConvBean = new TempConvBean();
     private final VolumeConvBean volumeConvBean = new VolumeConvBean();
     private final BitsBytesConvBean bitsBytesConvBean = new BitsBytesConvBean();
+    private final CurrencyConvBean currencyConvBean = new CurrencyConvBean();
     
     
 
@@ -103,6 +105,9 @@ public class ConversionServletPlus extends HttpServlet {
         
         String bitValue = request.getParameter("fromBit");
         String conversionTypeBit = request.getParameter("bitType");
+        
+        String currencyValue = request.getParameter("fromCurrency");
+        String conversionTypeCurrency = request.getParameter("currencyType");
         
         if(request.getParameter("convertTemp") != null) {
             
@@ -238,6 +243,104 @@ public class ConversionServletPlus extends HttpServlet {
                     //returnValue = conversionBean.BY2BI(value);
                     returnValue = bitsBytesConvBean.BY2BI(value);
                     request.setAttribute("bitTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+            }
+        }
+        
+        if(request.getParameter("convertCurrency") != null) {
+            double value = 0;
+            try {
+                value = Double.parseDouble(currencyValue);
+            }catch(NumberFormatException ex) {
+                request.setAttribute("currencyTo", "BADINPUT");
+                getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                System.out.println(ex);
+            }
+            
+            double returnValue;
+            switch(conversionTypeCurrency) {
+                case "U2S" :
+                    
+                    returnValue = currencyConvBean.U2S(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "U2E" :
+                    
+                    returnValue = currencyConvBean.U2E(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "U2Y" :
+                    
+                    returnValue = currencyConvBean.U2Y(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "S2U" :
+                    
+                    returnValue = currencyConvBean.S2U(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "S2Y" :
+                    
+                    returnValue = currencyConvBean.S2Y(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "S2E" :
+                    
+                    returnValue = currencyConvBean.S2E(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "E2S" :
+                    
+                    returnValue = currencyConvBean.E2S(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "E2U" :
+                    
+                    returnValue = currencyConvBean.E2U(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "E2Y" :
+                    
+                    returnValue = currencyConvBean.E2Y(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "Y2S" :
+                    
+                    returnValue = currencyConvBean.Y2S(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "Y2U" :
+                    
+                    returnValue = currencyConvBean.Y2U(value);
+                    request.setAttribute("currencyTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
+                    break;
+                    
+                case "Y2E" :
+                    
+                    returnValue = currencyConvBean.Y2E(value);
+                    request.setAttribute("currencyTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumPlusConv.jsp").forward(request,response);
                     break;
             }

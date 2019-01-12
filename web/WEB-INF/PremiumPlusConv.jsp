@@ -141,7 +141,7 @@
                 
                 <h2>Currency Conversion </h2>
                 <form action="ConversionServletPlus" method="post">
-                    <select id="volumeType" name="volumeType">
+                    <select id="currencyType" name="currencyType">
                         
                         <option value="U2S">USD to SEK</option>
                         <option value="U2E">USD to EUR</option>
@@ -151,13 +151,13 @@
                         <option value="S2E">SEK to EUR</option>
                         <option value="E2S">EUR to SEK</option>
                         <option value="E2U">EUR to USD</option>
-                        <option value="E2U">EUR to YEN</option>
+                        <option value="E2Y">EUR to YEN</option>
                         <option value="Y2S">YEN to SEK</option>
                         <option value="Y2U">YEN to USD</option>
                         <option value="Y2E">YEN to EUR</option>
                         
                         <input name="fromCurrency" type="text">
-                        <input name="toCurrency" type="text" disabled value=<%= request.getAttribute("volumeTo") %>>
+                        <input name="toCurrency" type="text" disabled value=<%= request.getAttribute("currencyTo") %>>
                         <button type="input" name="convertCurrency">Convert</button>
                             
                     </select> 
