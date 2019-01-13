@@ -151,10 +151,10 @@ public class RegisterServlet extends HttpServlet {
         if (checkUser == "" || checkUser == null && firstname != null && lastname != null && username != null && 
                 password != null && email != null && ssn != null){
             
-              String toEmail = request.getParameter("email");
+        String toEmail = request.getParameter("email");
         
         String fromEmail = "converterprojectda374b@gmail.com";
-        String Emailusername = "converterprojectda374b@gmail.com";
+        String Emailusername = "converterprojectda374b";
         String Emailpassword = "dummypassword";
         
         mailSender.sendEmail(fromEmail, Emailusername, Emailpassword, toEmail);
