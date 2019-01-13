@@ -15,6 +15,8 @@
     </head>
     <body>
         <h1>Welcome to All-In-One Converter Standard Edition</h1>
+        <h2 style="text-align: center; color: red;"> User: <%= request.getParameter("username") %> </h2>
+        
         <div class="row"> 
             
             <div class="column"> 

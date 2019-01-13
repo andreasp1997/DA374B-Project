@@ -143,6 +143,8 @@ public class LoginServlet extends HttpServlet {
             RequetsDispatcherObj.forward(request, response);
         } else {
             
+            request.setAttribute("username", checkUser);
+            
             if (checkAccountType.equalsIgnoreCase("standard")){            
                
                 RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("WEB-INF/StandardConv.jsp");

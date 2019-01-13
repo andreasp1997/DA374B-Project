@@ -14,7 +14,9 @@
             
     </head>
     <body>
-        <h1 style="text-align: center;">Welcome to All-In-One Converter Premium Edition</h1>
+        <h1 style="text-align: center;">Welcome to All-In-One Converter Premium Edition </h1>
+        <h2 style="text-align: center; color: red;"> User: <%= request.getParameter("username") %> </h2>
+
         <div class="row"> 
             
             <div class="column"> 
