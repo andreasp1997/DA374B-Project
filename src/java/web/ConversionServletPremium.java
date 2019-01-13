@@ -100,6 +100,11 @@ public class ConversionServletPremium extends HttpServlet {
         String bitValue = request.getParameter("fromBit");
         String conversionTypeBit = request.getParameter("bitType");
         
+        Singleton singleton = new Singleton();
+        String user = singleton.getInstance().getUserAcc();
+        request.getSession().setAttribute("username", user);
+        System.out.println(user);
+        
         if(request.getParameter("convertTemp") != null) {
             
             double value = 0;

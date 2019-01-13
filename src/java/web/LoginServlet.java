@@ -143,7 +143,9 @@ public class LoginServlet extends HttpServlet {
             RequetsDispatcherObj.forward(request, response);
         } else {
             
-            request.setAttribute("username", checkUser);
+            request.getSession().setAttribute("username", checkUser);
+            Singleton singleton = new Singleton();
+            singleton.getInstance().setUserAcc(checkUser);
             
             if (checkAccountType.equalsIgnoreCase("standard")){            
                

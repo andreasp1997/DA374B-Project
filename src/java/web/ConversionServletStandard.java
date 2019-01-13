@@ -90,6 +90,11 @@ public class ConversionServletStandard extends HttpServlet {
         String lengthValue = request.getParameter("fromLength");
         String conversionTypeLength = request.getParameter("lengthType");
         
+        Singleton singleton = new Singleton();
+        String user = singleton.getInstance().getUserAcc();
+        request.getSession().setAttribute("username", user);
+        System.out.println(user);
+        
         if(request.getParameter("convertTemp") != null) {
             
             double value = 0;

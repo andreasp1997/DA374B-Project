@@ -14,8 +14,11 @@
             
     </head>
     <body>
+        
+        <form action="ConversionServletStandard" method="post">
         <h1>Welcome to All-In-One Converter Standard Edition</h1>
-        <h2 style="text-align: center; color: red;"> User: <%= request.getParameter("username") %> </h2>
+        <h2 style="text-align: center; color: red;" name="user" id="user" > User: <%= (String) request.getSession().getAttribute("username") %> </h2>
+        </form>
         
         <div class="row"> 
             

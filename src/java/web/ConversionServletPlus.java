@@ -114,6 +114,11 @@ public class ConversionServletPlus extends HttpServlet {
         String timeValue = request.getParameter("fromTime");
         String conversionTypeTime = request.getParameter("timeType");
         
+        Singleton singleton = new Singleton();
+        String user = singleton.getInstance().getUserAcc();
+        request.getSession().setAttribute("username", user);
+        System.out.println(user);
+        
         if(request.getParameter("convertTemp") != null) {
             
             double value = 0;
