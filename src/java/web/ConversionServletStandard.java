@@ -136,12 +136,63 @@ public class ConversionServletStandard extends HttpServlet {
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
+                case "K2MG" :
+                    returnValue = weightConvBean.K2MG(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "K2O" : 
+                    returnValue = weightConvBean.K2O(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
                 case "P2K" :
                     //returnValue = conversionBean.P2K(value);
                     returnValue = weightConvBean.P2K(value);
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
+                case "P2O" : 
+                    returnValue = weightConvBean.P2O(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "P2MG" :
+                    returnValue = weightConvBean.P2MG(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "MG2K" :
+                    returnValue = weightConvBean.MG2K(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case  "MG2P": 
+                    returnValue = weightConvBean.MG2P(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "MG2O" : 
+                    returnValue = weightConvBean.MG2O(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "O2K" : 
+                    returnValue = weightConvBean.O2K(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "O2P": 
+                    returnValue = weightConvBean.O2P(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "O2MG":
+                    returnValue = weightConvBean.O2MG(value);
+                    request.setAttribute("weightTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                    
             }
         }
         
@@ -163,9 +214,59 @@ public class ConversionServletStandard extends HttpServlet {
                     request.setAttribute("lengthTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
+                case "M2IN" :
+                    returnValue = lengthConvBean.M2IN(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "M2CM" : 
+                    returnValue = lengthConvBean.M2CM(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
                 case "F2M" :
                     //returnValue = conversionBean.F2M(value);
                     returnValue = lengthConvBean.F2M(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "F2IN":
+                    returnValue = lengthConvBean.F2IN(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "F2CM" : 
+                    returnValue = lengthConvBean.F2CM(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "CM2M" :
+                    returnValue = lengthConvBean.CM2M(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "CM2F": 
+                    returnValue = lengthConvBean.CM2F(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "CM2IN" :
+                    returnValue = lengthConvBean.CM2IN(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "IN2M" : 
+                    returnValue = lengthConvBean.IN2M(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "IN2F" :
+                    returnValue = lengthConvBean.IN2F(value);
+                    request.setAttribute("lengthTo", returnValue);
+                    getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
+                    break;
+                case "IN2CM": 
+                    returnValue = lengthConvBean.IN2CM(value);
                     request.setAttribute("lengthTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
