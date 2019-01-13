@@ -16,7 +16,7 @@
         
     <body>
         <div class = "login-box">
-            <form action="RegisterServlet" method="post">
+            <form action="RegisterServlet" method="POST" action="RegisterServlet">
                 <h2>All-in-one Converter</h2>
                 <h2>Register:</h2><br>
                 <select id="accType" name="accType">

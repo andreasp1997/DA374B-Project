@@ -5,6 +5,7 @@
  */
 package web;
 
+import bean.RegisterBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,9 +38,17 @@ public class RegisterServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+        @EJB
+        private RegisterBean mailSender;
+
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        
+      
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
@@ -140,6 +150,14 @@ public class RegisterServlet extends HttpServlet {
         //Create Account if all conditions are met
         if (checkUser == "" || checkUser == null && firstname != null && lastname != null && username != null && 
                 password != null && email != null && ssn != null){
+            
+              String toEmail = request.getParameter("email");
+        
+        String fromEmail = "converterprojectda374b@gmail.com";
+        String Emailusername = "converterprojectda374b@gmail.com";
+        String Emailpassword = "dummypassword";
+        
+        mailSender.sendEmail(fromEmail, Emailusername, Emailpassword, toEmail);
             
             try {
             
