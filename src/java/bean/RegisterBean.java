@@ -7,6 +7,7 @@ package bean;
 
 import java.util.Properties;
 import javax.ejb.Stateless;
+import javax.mail.Session;
 
 /**
  *
