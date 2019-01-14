@@ -90,6 +90,8 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email").toString();
         String ssn = request.getParameter("ssn").toString();
         String accountType = request.getParameter("accType").toString();
+       
+        Singleton singleton = new Singleton();
         
         String accType = null;
         String checkUser = null;
@@ -156,6 +158,15 @@ public class RegisterServlet extends HttpServlet {
         String fromEmail = "converterprojectda374b@gmail.com";
         String Emailusername = "converterprojectda374b";
         String Emailpassword = "dummypassword";
+        
+        singleton.getInstance().setIdAccount(String.valueOf(accId));
+        singleton.getInstance().setFirstname(firstname);
+        singleton.getInstance().setLastname(lastname);
+        singleton.getInstance().setEmail(email);
+        singleton.getInstance().setSsn(ssn);
+        singleton.getInstance().setUsername(username);
+        singleton.getInstance().setPassword(password);
+        singleton.getInstance().setAccountType(accType);
         
         mailSender.sendEmail(fromEmail, Emailusername, Emailpassword, toEmail);
             

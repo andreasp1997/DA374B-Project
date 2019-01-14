@@ -15,6 +15,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import web.Singleton;
 
 /**
  *
@@ -50,8 +51,17 @@ public class RegisterBean {
             Message mailMessage = new MimeMessage(mailSession);
             mailMessage.setFrom(new InternetAddress(fromEmail));
             mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-            mailMessage.setContent("You have successfully registered welcome to All in one Converter","text/html");
-            mailMessage.setSubject("All in one converter");
+            
+            
+            //Message info
+            Singleton singleton = new Singleton();
+            mailMessage.setContent("Hi " + singleton.getInstance().getFirstname() + " " +
+                    singleton.getInstance().getLastname() + "\n" +
+                    ".You have successfully registered. Welcome to All in one Converter." + "\n" + 
+                            "You have created a " 
+                    + singleton.getInstance().getAccountType() + " account type. "
+                            + "Standard = Free, Premium = $9.99, Plus = $19.99","text/html");
+            mailMessage.setSubject("All-In-One Converter");
             
             
             Transport transport = mailSession.getTransport("smtp");
