@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package web;
+package Singleton;
 
 /**
  *
@@ -13,18 +13,22 @@ public class Singleton {
     
     private static Singleton instance = null;
     
-    //Account name used to show in converter screens
+    // user acc printed in conversion menu
     private String userAcc;
-    
-    //Account registration
+    // used for setting correct account id when registering
     private String idAccount;
+    // firstname for Java mail message
     private String firstname;
+    // lastname for Java Mail message
     private String lastname;
+    // used for checking username
     private String username;
+    // used for checking password
     private String password;
-    private String email;
-    private String ssn;
+    // used for getting account type
     private String accountType;
+    // used for checking user
+    private String checkUser;
     
     public Singleton() {
 
@@ -61,16 +65,14 @@ public class Singleton {
 
     public void setPassword(String password) {this.password = password;}
 
-    public String getEmail() {return email;}
-
-    public void setEmail(String email) {this.email = email;}
-
-    public String getSsn() {return ssn;}
-
-    public void setSsn(String ssn) {this.ssn = ssn;}
-
     public String getAccountType() {return accountType;}
 
     public void setAccountType(String accountType) {this.accountType = accountType;}
+
+    public String getCheckUser() { return checkUser; }
+
+    public void setCheckUser(String checkUser) { this.checkUser = checkUser; }
+    
+    
     
 }

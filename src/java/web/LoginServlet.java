@@ -5,6 +5,9 @@
  */
 package web;
 
+import Singleton.Singleton;
+import Database.DBhandler;
+import bean.DBbean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -13,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +31,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
+    @EJB
+    private DBbean dbBean = new DBbean();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -84,67 +91,33 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-        DBhandler dbhandler = new DBhandler();
-        Connection connection = dbhandler.getCon();
+        Singleton singleton = new Singleton();
         
         String checkPassword = null;
         String checkUser = null;
         String checkAccountType = null;
         
         //Check password for username
-        try {
-            
-            Statement statement = connection.createStatement();
-            
-            ResultSet rs = statement.executeQuery("SELECT password from mydb.Account where username = + '" + username + "'");
-            
-            while (rs.next()){
-                checkPassword = rs.getString(1);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dbBean.checkPassForUser(username);
+        checkPassword = singleton.getInstance().getPassword();
         
         //Check if user exists 
-        try {
-            
-            Statement statement = connection.createStatement();
-            
-            ResultSet rs = statement.executeQuery("SELECT username from mydb.Account where username = + '" + username + "'");
-            
-            while (rs.next()){
-                checkUser = rs.getString(1);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dbBean.checkForUsername(username);
+        checkUser = singleton.getInstance().getCheckUser();
         
         //Check account type for logging in
-        try {
-            
-            Statement statement = connection.createStatement();
-            
-            ResultSet rs = statement.executeQuery("SELECT accountType from mydb.Account where username = + '" + username + "'");
-            
-            while (rs.next()){
-                checkAccountType = rs.getString(1);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dbBean.checkAccountType(username);
+        checkAccountType = singleton.getInstance().getAccountType();
         
-        System.out.println(checkAccountType);
-        
+        // Checks if username/password is incorrect, and if they are, user will be prompted to retry login
         if (checkUser == "" || !checkPassword.equals(password)){
             RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("LoginRetry.jsp");
             RequetsDispatcherObj.forward(request, response);
+        
+        // Saves username to be shown in converter menu, and sends user to converter menu based on account type
         } else {
             
             request.getSession().setAttribute("username", checkUser);
-            Singleton singleton = new Singleton();
             singleton.getInstance().setUserAcc(checkUser);
             
             if (checkAccountType.equalsIgnoreCase("standard")){            

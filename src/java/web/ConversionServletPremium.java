@@ -5,8 +5,8 @@
  */
 package web;
 
+import Singleton.Singleton;
 import bean.BitsBytesConvBean;
-import bean.ConversionBean;
 import bean.LengthConvBean;
 import bean.TempConvBean;
 import bean.VolumeConvBean;
@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ConversionServletPremium", urlPatterns = {"/ConversionServletPremium"})
 public class ConversionServletPremium extends HttpServlet {
     @EJB
-    private ConversionBean conversionBean;
     private final LengthConvBean lengthConvBean = new LengthConvBean();
     private final WeightConvBean weightConvBean = new WeightConvBean();
     private final TempConvBean tempConvBean = new TempConvBean();
@@ -105,6 +104,7 @@ public class ConversionServletPremium extends HttpServlet {
         request.getSession().setAttribute("username", user);
         System.out.println(user);
         
+        //Convert temperature
         if(request.getParameter("convertTemp") != null) {
             
             double value = 0;
@@ -119,13 +119,11 @@ public class ConversionServletPremium extends HttpServlet {
             System.out.println(conversionTypeTemp);
             switch (conversionTypeTemp) {
                 case "F2C" :
-                    //returnValue = conversionBean.F2C(value);
                     returnValue = tempConvBean.F2C(value);
                     request.setAttribute("tempTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request, response);
                     break;
                 case "C2F":
-                    //returnValue = conversionBean.C2F(value);
                     returnValue = tempConvBean.C2F(value);
                     request.setAttribute("tempTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
@@ -133,6 +131,7 @@ public class ConversionServletPremium extends HttpServlet {
             }
         }
         
+        // Convert Weight
         if(request.getParameter("convertWeight") != null) {
             double value = 0;
             try {
@@ -146,7 +145,6 @@ public class ConversionServletPremium extends HttpServlet {
             double returnValue;
             switch(conversionTypeWeight) {
                 case "K2P" :
-                    //returnValue = conversionBean.K2P(value);
                     returnValue = weightConvBean.K2P(value);
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
@@ -162,7 +160,6 @@ public class ConversionServletPremium extends HttpServlet {
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
                     break;
                 case "P2K" :
-                    //returnValue = conversionBean.P2K(value);
                     returnValue = weightConvBean.P2K(value);
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
@@ -210,6 +207,7 @@ public class ConversionServletPremium extends HttpServlet {
             }
         }
         
+        // Convert Length
         if(request.getParameter("convertLength") != null) {
             double value = 0;
             try {
@@ -223,7 +221,6 @@ public class ConversionServletPremium extends HttpServlet {
             double returnValue;
             switch(conversionTypeLength) {
                 case "M2F" :
-                    //returnValue = conversionBean.M2F(value);
                     returnValue = lengthConvBean.M2F(value);
                     request.setAttribute("lengthTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
@@ -239,7 +236,6 @@ public class ConversionServletPremium extends HttpServlet {
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
                     break;
                 case "F2M" :
-                    //returnValue = conversionBean.F2M(value);
                     returnValue = lengthConvBean.F2M(value);
                     request.setAttribute("lengthTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
@@ -287,6 +283,7 @@ public class ConversionServletPremium extends HttpServlet {
             }
         }
         
+        // Convert volume
         if(request.getParameter("convertVolume") != null) {
             double value = 0;
             try {
@@ -300,7 +297,6 @@ public class ConversionServletPremium extends HttpServlet {
             double returnValue;
             switch(conversionTypeVolume) {
                 case "L2G" :
-                    //returnValue = conversionBean.L2G(value);
                     returnValue = volumeConvBean.L2G(value);
                     request.setAttribute("volumeTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
@@ -316,7 +312,6 @@ public class ConversionServletPremium extends HttpServlet {
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
                     break;
                 case "G2L" :
-                    //returnValue = conversionBean.G2L(value);
                     returnValue = volumeConvBean.G2L(value);
                     System.out.println(returnValue);
                     request.setAttribute("volumeTo", returnValue);
@@ -366,6 +361,7 @@ public class ConversionServletPremium extends HttpServlet {
             }
         }
         
+        // Convert bit/bytes
         if(request.getParameter("convertBit") != null) {
             double value = 0;
             try {
@@ -379,13 +375,11 @@ public class ConversionServletPremium extends HttpServlet {
             double returnValue;
             switch(conversionTypeBit) {
                 case "BI2BY" :
-                    //returnValue = conversionBean.BI2BY(value);
                     returnValue = bitsBytesConvBean.BI2BY(value);
                     request.setAttribute("bitTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);
                     break;
                 case "BY2BI" :
-                    //returnValue = conversionBean.BY2BI(value);
                     returnValue = bitsBytesConvBean.BY2BI(value);
                     request.setAttribute("bitTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/PremiumConv.jsp").forward(request,response);

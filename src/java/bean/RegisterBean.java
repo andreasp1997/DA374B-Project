@@ -15,7 +15,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import web.Singleton;
+import Singleton.Singleton;
 
 /**
  *
@@ -67,6 +67,7 @@ public class RegisterBean {
             Transport transport = mailSession.getTransport("smtp");
             transport.connect("smtp.gmail.com",username,password);
             
+            // send mail
             transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
             
             

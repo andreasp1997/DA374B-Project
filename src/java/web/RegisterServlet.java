@@ -5,6 +5,9 @@
  */
 package web;
 
+import Singleton.Singleton;
+import Database.DBhandler;
+import bean.DBbean;
 import bean.RegisterBean;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,7 +42,8 @@ public class RegisterServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
         @EJB
-        private RegisterBean mailSender;
+        private RegisterBean mailSender = new RegisterBean();
+        private DBbean dbBean = new DBbean();
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -98,25 +102,9 @@ public class RegisterServlet extends HttpServlet {
         String idAccountNr = null;
         int accId = 0;
         
-        DBhandler dbhandler = new DBhandler();
-        Connection connection = dbhandler.getCon();
-        
         //Check if username exists
-        try {
-            
-            Statement statement = connection.createStatement();
-            
-            ResultSet rs = statement.executeQuery("SELECT username from mydb.Account where username = + '" + username + "'");
-            
-            while (rs.next()){
-                checkUser = rs.getString(1);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        System.out.println(accountType);
+        dbBean.checkForUsername(username);
+        checkUser = Singleton.getInstance().getCheckUser();
         
         //Check what account type is selected
         if (accountType.equalsIgnoreCase("Standard")){
@@ -128,19 +116,8 @@ public class RegisterServlet extends HttpServlet {
         }
         
         //get account ID
-        try {
-            
-            Statement statement = connection.createStatement();
-            
-            ResultSet rs = statement.executeQuery("SELECT count(idAccount) from mydb.Account");
-            
-            while (rs.next()){
-                idAccountNr = rs.getString(1);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dbBean.getAccountID();
+        idAccountNr = singleton.getInstance().getIdAccount();
         
         if(idAccountNr.equals("0") || idAccountNr == null || idAccountNr.equals("")){
             accId = 0;
@@ -155,36 +132,25 @@ public class RegisterServlet extends HttpServlet {
             
         String toEmail = request.getParameter("email");
         
+        // sender for Java Mail
         String fromEmail = "converterprojectda374b@gmail.com";
         String Emailusername = "converterprojectda374b";
         String Emailpassword = "dummypassword";
         
-        singleton.getInstance().setIdAccount(String.valueOf(accId));
+        // used for java mail
         singleton.getInstance().setFirstname(firstname);
         singleton.getInstance().setLastname(lastname);
-        singleton.getInstance().setEmail(email);
-        singleton.getInstance().setSsn(ssn);
-        singleton.getInstance().setUsername(username);
-        singleton.getInstance().setPassword(password);
         singleton.getInstance().setAccountType(accType);
         
+        // Send confirmation email
         mailSender.sendEmail(fromEmail, Emailusername, Emailpassword, toEmail);
-            
-            try {
-            
-            Statement statement = connection.createStatement();
-            
-            statement.executeUpdate("INSERT INTO mydb.Account (idAccount, "
-                    + "firstname, lastname, email, ssn, username, password, accountType) values"
-                    + "('"+ accId +"', '"+ firstname +"', '" + lastname + "', '" + email + "', '" + ssn + "',"
-                            + " '" + username + "', '" + password +"', '" + accType +"')");
-            
-            RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("Login.jsp");
-            RequetsDispatcherObj.forward(request, response);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        // Create user
+        dbBean.createUser(accId, firstname, lastname, email, ssn, username, password, accType);
+        
+        // Go back to login page
+        RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("Login.jsp");
+        RequetsDispatcherObj.forward(request, response);
           
         // Redirect to register again if username already exists
         // Or fields are empty

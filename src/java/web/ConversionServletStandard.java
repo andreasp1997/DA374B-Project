@@ -5,7 +5,7 @@
  */
 package web;
 
-import bean.ConversionBean;
+import Singleton.Singleton;
 import bean.LengthConvBean;
 import bean.TempConvBean;
 import bean.WeightConvBean;
@@ -25,10 +25,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ConversionServletStandard", urlPatterns = {"/ConversionServletStandard"})
 public class ConversionServletStandard extends HttpServlet {
     @EJB
-    private ConversionBean conversionBean;
     private final LengthConvBean lengthConvBean = new LengthConvBean();
     private final WeightConvBean weightConvBean = new WeightConvBean();
     private final TempConvBean tempConvBean = new TempConvBean();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -95,6 +95,7 @@ public class ConversionServletStandard extends HttpServlet {
         request.getSession().setAttribute("username", user);
         System.out.println(user);
         
+        // Convert temperature
         if(request.getParameter("convertTemp") != null) {
             
             double value = 0;
@@ -109,13 +110,11 @@ public class ConversionServletStandard extends HttpServlet {
             double returnValue;
             switch (conversionTypeTemp) {
                 case "F2C" :
-                    //returnValue = conversionBean.F2C(value);
                     returnValue = tempConvBean.F2C(value);
                     request.setAttribute("tempTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request, response);
                     break;
                 case "C2F":
-                    //returnValue = conversionBean.C2F(value);
                     returnValue = tempConvBean.C2F(value);
                     request.setAttribute("tempTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
@@ -123,6 +122,7 @@ public class ConversionServletStandard extends HttpServlet {
             }
         }
         
+        // Convert Weight
         if(request.getParameter("convertWeight") != null) {
             double value = 0;
             try {
@@ -136,7 +136,6 @@ public class ConversionServletStandard extends HttpServlet {
             double returnValue;
             switch(conversionTypeWeight) {
                 case "K2P" :
-                    //returnValue = conversionBean.K2P(value);
                     returnValue = weightConvBean.K2P(value);
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
@@ -152,7 +151,6 @@ public class ConversionServletStandard extends HttpServlet {
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
                 case "P2K" :
-                    //returnValue = conversionBean.P2K(value);
                     returnValue = weightConvBean.P2K(value);
                     request.setAttribute("weightTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
@@ -201,6 +199,7 @@ public class ConversionServletStandard extends HttpServlet {
             }
         }
         
+        // Convert length
         if(request.getParameter("convertLength") != null) {
             double value = 0;
             try {
@@ -214,7 +213,6 @@ public class ConversionServletStandard extends HttpServlet {
             double returnValue;
             switch(conversionTypeLength) {
                 case "M2F" :
-                    //returnValue = conversionBean.M2F(value);
                     returnValue = lengthConvBean.M2F(value);
                     request.setAttribute("lengthTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
@@ -230,7 +228,6 @@ public class ConversionServletStandard extends HttpServlet {
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
                     break;
                 case "F2M" :
-                    //returnValue = conversionBean.F2M(value);
                     returnValue = lengthConvBean.F2M(value);
                     request.setAttribute("lengthTo", returnValue);
                     getServletContext().getRequestDispatcher("/WEB-INF/StandardConv.jsp").forward(request,response);
