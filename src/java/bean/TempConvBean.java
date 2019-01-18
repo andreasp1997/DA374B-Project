@@ -5,13 +5,13 @@
  */
 package bean;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author andreas
  */
-@Stateful
+@Stateless
 public class TempConvBean {
 
     public double F2C(double value) {

@@ -81,7 +81,8 @@ public class ConversionServletStandard extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                String tempValue = request.getParameter("fromTemp");
+                
+        String tempValue = request.getParameter("fromTemp");
         String conversionTypeTemp = request.getParameter("tempType");
         
         String weightValue = request.getParameter("fromWeight");
