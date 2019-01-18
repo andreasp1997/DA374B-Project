@@ -110,7 +110,7 @@ public class LoginServlet extends HttpServlet {
         checkAccountType = singleton.getInstance().getAccountType();
         
         // Checks if username/password is incorrect, and if they are, user will be prompted to retry login
-        if (checkUser == "" || !checkPassword.equals(password)){
+        if (checkUser == "" || checkUser == null ||  !checkPassword.equals(password)){
             RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("LoginRetry.jsp");
             RequetsDispatcherObj.forward(request, response);
         
